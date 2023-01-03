@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const ejs = require("ejs");
 var loggin = false;
-
+var orderN = 0;
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
 const path = require('path')
@@ -17,6 +17,7 @@ const AdminSchema = {
 }
 
 const orderSchema = {
+    OrderId:Number,
     firstName:String,
     lastName:String,
     email: String,
@@ -34,7 +35,7 @@ const Order = mongoose.model("Order",orderSchema);
 const Admin = mongoose.model("Admin", AdminSchema);
 
 app.get("/",function(req,res){
-    res.sendFile(__dirname+"/index.html")
+    res.render("index");
 })
 
 
@@ -42,7 +43,7 @@ app.get("/admin",function(req,res){
     if(loggin == true) {
         res.redirect("/admin/dashboard");
     } else {
-        res.sendFile(__dirname+"/login.html");
+        res.render("login");
     }
 })
 
@@ -78,6 +79,7 @@ app.post("/", function(req,res){
         default: state = "No state found";
         }
     const order = new Order({
+        OrderId:orderN,
         firstName: fname,
         lastName: lname,
         email:email,
@@ -89,6 +91,7 @@ app.post("/", function(req,res){
         mouse:mouseMod,
         fault:fault
     })
+    orderN++;
     order.save();
     console.log(order);
 
@@ -139,12 +142,15 @@ app.get("/admin/dashboard", function(req,res){
     }
 })
 
-app.post("/orders",function(req,res){
-    console.log("orders button was clicked");
+app.get("/orders",function(req,res){
+    if(loggin==false){
+        res.redirect("/admin")
+    } else {
     let recOrders = [];
     Order.find({},function(err,orders){
         orders.forEach(function(order){
             const o1 = {
+                Oid: order.OrderId,
                 Oname: order.firstName + ' ' + order.lastName,
                 Oemail: order.email,
                 Onumber: order.PhoneNo,
@@ -155,13 +161,30 @@ app.post("/orders",function(req,res){
                 Omouse: order.mouse,
                 Odesc: order.fault
             }
+            console.log(o1);
             recOrders.push(o1);
         }) 
     res.render("orders",{Orders:recOrders});
     })
-    
+}
 })
 
+app.post("/orders",function(req,res){
+    console.log("orders button was clicked");
+    res.redirect("/orders");
+})
+
+app.post("/delete",function(req,res){
+    const ids = req.body.orderIDs;
+    Order.findOneAndDelete({OrderId:ids},function(err,order){
+        if(err){
+            console.log(err)
+        } else {
+            console.log("Successfuly delete order: " + order)
+        }
+    });
+    res.redirect("/orders");
+})
 
 app.listen(3000,function(){
     console.log("Server started on port 3000");

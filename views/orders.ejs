@@ -1,18 +1,56 @@
 <%- include("dashboard") -%>
 
 
-<div class="container orderBox">
+<div class="container-fluid orderBox row row-cols-1 row-cols-sm-2">
    <%Orders.forEach(function(order){%>
-    <div class="orders container">
-        <p> Name: <%= order.Oname %> </p>
-        <p> Number: <%= order.Onumber %> </p>
-        <p> Email: <%= order.Oemail %> </p>
-        <p> Address: <%= order.Oaddress %> </p>
-        <p> City: <%= order.Ocity %> </p>
-        <p> State: <%= order.Ostate %> </p>
-        <p> Postal Code: <%= order.Ozip %> </p>
-        <p> Mouse: <%= order.Omouse %> </p>
-        <p> Description: <%= order.Odesc %> </p>
+    <form action="/delete" method="post">
+    <div class="col">
+    <div class="orders container col">
+        <div class="row">
+            <div class="col">
+                <input type="hidden" name="orderIDs" value="<%= order.Oid %>"></input>
+                <p> Order Number: <%= order.Oid %> </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p> Name: <%= order.Oname %> </p>
+            </div>
+            <div class="col">
+                <p> Number: <%= order.Onumber %> </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p> Email: <%= order.Oemail %> </p>
+            </div>
+            <div class="col">
+                <p> Address: <%= order.Oaddress %> </p>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p> City: <%= order.Ocity %> </p>
+          </div>  
+          <div class="col">
+            <p> State: <%= order.Ostate %> </p>
+          </div>
+          <div class="col">
+            <p> Postal Code: <%= order.Ozip %> </p>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p> Mouse: <%= order.Omouse %> </p>
+            </div>
+            <div class="col">
+                <p> Description: <%= order.Odesc %> </p>
+            </div>
+        </div>
+        
+            <button class="btn btn-danger">Delete</button>
+        </form>
     </div>
+</div>
    <%});%>
 </div>
