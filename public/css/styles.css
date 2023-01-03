@@ -1,6 +1,8 @@
 body{
     background-color: rgb(0, 67, 143);
     color: white;
+    overflow: hidden;
+    margin-left: 10px;
 }
 .loginBox{
     align-items: center;
@@ -95,4 +97,51 @@ body{
     height: 50rem;
     width: 55%;
     background-color: aqua;
+}
+
+.navabar{
+    background-color: rgb(0, 67, 143);
+}
+.navbar-brand{
+    transition:1s;
+    font-size: 50px;
+    font-weight: 700;
+    font-family: 'Comfortaa', cursive;
+}
+
+.navbar-brand:hover{
+    color: #ffba00;
+    transition: 1s;
+}
+.imgbox{
+    background-image: url("/images/logo-white.png");
+    position: relative;
+    top: 3rem;
+    left: -10rem;
+    height: 900px;
+    width: 900px;
+    background-repeat: no-repeat;
+    transition: 0.5s;
+}
+
+.imgbox:hover{
+    position: relative;
+    transition: 0.3s;
+    background-image: url("/images/logo-hover.png");
+    height: 900px;
+    width: 900px;
+}
+@media screen and (max-width: 800px) {
+    body{
+        overflow: scroll;
+    }
+
+    .imgbox{
+        position: absolute;
+        z-index: -1;
+    }
+    .imgbox:hover{
+        position: absolute;
+        z-index: -1;
+    }
 }
