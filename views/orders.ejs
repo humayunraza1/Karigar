@@ -1,0 +1,18 @@
+<%- include("dashboard") -%>
+
+
+<div class="container orderBox">
+   <%Orders.forEach(function(order){%>
+    <div class="orders container">
+        <p> Name: <%= order.Oname %> </p>
+        <p> Number: <%= order.Onumber %> </p>
+        <p> Email: <%= order.Oemail %> </p>
+        <p> Address: <%= order.Oaddress %> </p>
+        <p> City: <%= order.Ocity %> </p>
+        <p> State: <%= order.Ostate %> </p>
+        <p> Postal Code: <%= order.Ozip %> </p>
+        <p> Mouse: <%= order.Omouse %> </p>
+        <p> Description: <%= order.Odesc %> </p>
+    </div>
+   <%});%>
+</div>

@@ -60,23 +60,29 @@ body{
     font-size: 20px;
     font-weight: 500;
 }
-a{
-    color: white;
-    text-decoration: none;
-}
 
-a:hover{
-    color: rgb(250, 171, 0);
-}
-
-
-.orderbox{
+.orders{
     position: relative;
-    border-radius: 20px;
-    left: 5%;
-    top: 10rem;
-    margin: 0px;
-    background-color: rgb(13, 130, 207);
-    width: 40rem;
-    padding: 20px;
+    top: 10px;
+    border-radius:10px;
+    margin-bottom:20px;
+    background-color: white;
+    padding: 10px;
+    
+}
+
+.orders:hover{
+    box-shadow: 10px 10px 25px black;
+    transition: 0.5s;
+}
+
+.orderBox{
+    border-radius: 10px;
+    color: black;
+    position: relative;
+    top: 5rem;
+    left: 8rem;
+    height: 50rem;
+    width: 55%;
+    background-color: aqua;
 }

@@ -1,13 +1,14 @@
 const express = require('express');
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const ejs = require("ejs");
 var loggin = false;
 
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
 const path = require('path')
 app.use(express.static(__dirname + '/public'));
-
+app.set('view engine', 'ejs');
 mongoose.connect("mongodb://localhost:27017/KarigarDB",{useNewUrlParser: true});
 
 const AdminSchema = {
@@ -134,8 +135,31 @@ app.get("/admin/dashboard", function(req,res){
     if(loggin == false){
         res.redirect("/admin")
     } else {
-        res.sendFile(__dirname+"/dashboard.html");
+        res.render("dashboard")
     }
+})
+
+app.post("/orders",function(req,res){
+    console.log("orders button was clicked");
+    let recOrders = [];
+    Order.find({},function(err,orders){
+        orders.forEach(function(order){
+            const o1 = {
+                Oname: order.firstName + ' ' + order.lastName,
+                Oemail: order.email,
+                Onumber: order.PhoneNo,
+                Oaddress: order.location,
+                Ocity: order.city,
+                Ostate: order.state,
+                Ozip: order.zip,
+                Omouse: order.mouse,
+                Odesc: order.fault
+            }
+            recOrders.push(o1);
+        }) 
+    res.render("orders",{Orders:recOrders});
+    })
+    
 })
 
 
