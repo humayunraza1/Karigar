@@ -1,0 +1,155 @@
+body{
+    color: white;
+    overflow: hidden;
+    margin-left: 10px;
+}
+.loginBox{
+    align-items: center;
+    justify-content: center;
+    height: 220px;
+    width: 500px;
+    background-color: rgb(13, 130, 207);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: -15px 0px 50px rgb(15, 0, 155);
+}
+
+.dashboard{
+    position: relative;
+    background-color: bisque;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+
+}
+
+.vertical-bar{
+    position: relative;
+    display: inline-block;
+    background-color: black;
+    margin: 0px;
+    left: -1%;
+    border-radius: 10px;
+    padding: 20px;
+    height: 100%;
+    width: 20%;
+    color: white;
+}
+
+.logout{
+    margin-left: 30px;
+    margin-bottom: 50px;
+}
+
+.dashBody{
+    background-color: white;
+    padding: 60px;
+    height: 100%;
+    width: 100%;
+}
+
+.btnbox{
+    margin-top: 10px;
+}
+
+.options{
+    position: relative;
+    padding: 20px;
+    top: 100px;
+    background-color: bisque;
+    height: 50%;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.orderbox{
+    position: relative;
+    border-radius: 20px;
+    left: 5%;
+    top: 10rem;
+    margin: 0px;
+    background-color: rgb(0, 0, 60);
+    width: 40rem;
+    padding: 20px;
+}
+.orders{
+    position: relative;
+    top: 10px;
+    border-radius:10px;
+    margin-bottom:20px;
+    background-color: white;
+    padding: 10px;
+    
+}
+
+.orders:hover{
+    box-shadow: 10px 10px 25px black;
+    transition: 0.5s;
+}
+
+.orderBox{
+    border-radius: 10px;
+    color: black;
+    position: relative;
+    top: 5rem;
+    left: 8rem;
+    height: 50rem;
+    width: 55%;
+    background-color: aqua;
+}
+
+.navabar{
+    background-color: rgb(0, 67, 143);
+}
+.navbar-brand{
+    transition:1s;
+    font-size: 50px;
+    font-weight: 700;
+    font-family: 'Comfortaa', cursive;
+}
+
+.navbar-brand:hover{
+    color: #ffba00;
+    transition: 1s;
+}
+.imgbox{
+    background-image: url("/images/logo-white.png");
+    position: relative;
+    top: 3rem;
+    left: -10rem;
+    height: 900px;
+    width: 900px;
+    background-repeat: no-repeat;
+    transition: 0.5s;
+}
+
+.imgbox:hover{
+    position: relative;
+    transition: 0.3s;
+    background-image: url("/images/logo-hover.png");
+    height: 900px;
+    width: 900px;
+}
+
+.video-container{
+    position: absolute;
+    left: 0px;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    -webkit-filter: blur(3px);
+}
+@media screen and (max-width: 800px) {
+    body{
+        overflow: scroll;
+    }
+
+    .imgbox{
+        position: absolute;
+        z-index: -1;
+    }
+    .imgbox:hover{
+        position: absolute;
+        z-index: -1;
+    }
+}
